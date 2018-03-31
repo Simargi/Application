@@ -23,20 +23,18 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: ['style-loader','css-loader', {
-                    loader: 'postcss-loader',
-                    options: {
-                        plugins: () => [require('autoprefixer')]
-                    }}]
-            },
-            {
-                test: /\.scss/,
-                use: ['style-loader','css-loader', {
-                    loader: 'postcss-loader',
-                    options: {
-                        plugins: () => [require('autoprefixer')]
-                    }}, 'sass-loader']
+                test: /\.s?(a|c)ss$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader", options: {
+                        sourceMap: true
+                    }
+                }, {
+                    loader: "sass-loader", options: {
+                        sourceMap: true
+                    }
+                }]
             }
         ]
     }
