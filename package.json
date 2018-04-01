@@ -1,11 +1,12 @@
 {
   "name": "simargi-form-app",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "start": "webpack",
+    "devserver": "webpack-dev-server --content-base public/ --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,8 @@
     "prop-types": "^15.6.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
     "simargi-component": "^0.3.5"
   },
   "devDependencies": {

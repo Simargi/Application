@@ -1,26 +1,29 @@
 import React from 'react';
-import { Textarea, Button, Input } from 'simargi-component';
+import { connect } from 'react-redux';
+import { getUsers } from './action/action';
+import Hello from "./container/Hello";
+import UserList from "./container/Users";
+
+@connect(
+    state => ({
+        userslist: state.users
+    }), {
+        getUsers
+    }
+)
 
 export default class App extends React.Component {
     state = {
-        value: 0,
-        UserValue: ''
+        loading: false
     };
-    handleChangeValue = (e) => {
-        this.setState({value: e.target.value.length});
-    };
-    changeName = (e) => {
-        this.setState({
-            UserValue: e.target.value
-        });
-    };
+    componentDidMount() {
+        this.props.getUsers()
+    }
     render() {
         return(
             <div className='app'>
-                <Textarea maxlength={10} disable={false} onChange={this.handleChangeValue} />
-                <p>You entered <Button btnSize={'lg'} value={this.state.value} /> symbol</p>
-                <p>Enter your name <Input onHandler={this.changeName} /></p>
-                <p>You entered {this.state.UserValue}</p>
+                {this.state.loading && <Hello/> }
+                <UserList users={this.props.userslist}/>
             </div>
         )
     }
