@@ -1,14 +1,14 @@
-import C from './constans';
+import actionType from './constans';
 
 function getUsers() {
     return {
-        type: C.GET_USERS
+        type: actionType.GET_USERS
     }
 }
 
 function saveUsers(data) {
     return {
-        type: C.SAVE_USERS,
+        type: actionType.SAVE_USERS,
         users: data
     }
 }

@@ -1,11 +1,11 @@
-import C from './../action/constans';
+import actionType from './../action/constans';
 
 let initialState = {
     users: []
 };
 export default function reducerApp(state = initialState, action) {
     switch (action.type) {
-        case C.SAVE_USERS:
+        case actionType.SAVE_USERS:
             return {
                 ...state,
                 users: [...state.users, ...action.users.data]
