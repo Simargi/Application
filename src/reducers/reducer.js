@@ -14,7 +14,6 @@ export default function reducerApp(state = initialState, action) {
             };
             break;
         case actionType.FAIL_REQUEST:
-            //console.log(state)
             return {
                 ...state,
                 error_message: action.errors.message,

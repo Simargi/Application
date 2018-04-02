@@ -10,7 +10,6 @@ const middleware = ({dispatch, getState}) => next => action => {
                 })
                 .then(
                     json => {
-                        //console.log(json)
                         return (
                             dispatch(saveUsers(json))
                         )
