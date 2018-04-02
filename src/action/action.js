@@ -1,9 +1,12 @@
-import actionType from './constans';
+import actionType from './actionTypes';
 
 function getUsers() {
     return {
         type: actionType.GET_USERS
     }
+}
+function sendUserData() {
+    return {type: actionType.SEND_FORM_DATA}
 }
 
 function saveUsers(data) {
@@ -13,4 +16,11 @@ function saveUsers(data) {
     }
 }
 
-export { getUsers, saveUsers }
+function errorMessage(error) {
+    return {
+        type: actionType.FAIL_REQUEST,
+        errors: error
+    }
+}
+
+export { getUsers, sendUserData, saveUsers, errorMessage }

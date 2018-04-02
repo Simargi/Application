@@ -1,0 +1,9 @@
+const actionType = {
+    GET_USERS: "GET_USERS",
+    SAVE_USERS: "SAVE_USERS",
+    SUCCESS_REQUEST: "SUCCESS_REQUEST",
+    FAIL_REQUEST: "FAIL_REQUEST",
+    SEND_FORM_DATA: "SEND_FORM_DATA"
+};
+
+export default actionType
