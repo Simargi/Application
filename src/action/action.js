@@ -5,6 +5,9 @@ function getUsers() {
         type: actionType.GET_USERS
     }
 }
+function sendUserData() {
+    return {type: actionType.SEND_FORM_DATA}
+}
 
 function saveUsers(data) {
     return {
@@ -20,4 +23,4 @@ function errorMessage(error) {
     }
 }
 
-export { getUsers, saveUsers, errorMessage }
+export { getUsers, sendUserData, saveUsers, errorMessage }
