@@ -1,4 +1,4 @@
-import actionType from './constans';
+import actionType from './actionTypes';
 
 function getUsers() {
     return {
@@ -13,4 +13,11 @@ function saveUsers(data) {
     }
 }
 
-export { getUsers, saveUsers }
+function errorMessage(error) {
+    return {
+        type: actionType.FAIL_REQUEST,
+        errors: error
+    }
+}
+
+export { getUsers, saveUsers, errorMessage }

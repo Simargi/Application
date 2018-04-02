@@ -1,5 +1,5 @@
-import actionType from './../action/constans';
-import { saveUsers } from '../action/action';
+import actionType from '../action/actionTypes';
+import { saveUsers, errorMessage } from '../action/action';
 
 const middleware = ({dispatch, getState}) => next => action => {
     switch (action.type) {
@@ -9,8 +9,18 @@ const middleware = ({dispatch, getState}) => next => action => {
                     return response.json()
                 })
                 .then(
-                    json => dispatch(saveUsers(json))
+                    json => {
+                        //console.log(json)
+                        return (
+                            dispatch(saveUsers(json))
+                        )
+                    }
                 )
+                .catch(error => {
+                    return (
+                        dispatch(errorMessage(error))
+                    )
+                })
             break;
         default:
             return next(action)
