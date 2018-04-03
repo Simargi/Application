@@ -1,20 +1,19 @@
 {
   "name": "simargi-form-app",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": false,
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack",
-    "devserver": "webpack-dev-server --content-base public/ --inline",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devserver": "webpack-dev-server --content-base public/ --inline"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Simargi/Application.git"
   },
   "author": "Simargi",
-  "license": "ISC",
+  "license": "Simargi",
   "bugs": {
     "url": "https://github.com/Simargi/Application/issues"
   },
@@ -25,7 +24,7 @@
     "react-dom": "^15.2.1",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "simargi-component": "^0.5.1"
+    "simargi-component": "^0.5.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { getUsers, sendUserData } from './action/action';
 import Hello from "./container/Hello";
 import UserList from "./container/Users";
-import { SuccessModal, ErrorModal, Modal, FormContainer } from 'simargi-component';
+import FormContainer from "./container/FormContainer";
+import { Modal } from 'simargi-component';
 
 @connect(
     state => ({
@@ -18,23 +19,22 @@ import { SuccessModal, ErrorModal, Modal, FormContainer } from 'simargi-componen
 
 export default class App extends React.Component {
     state = {
-        loading: false
+        loading: false,
+        isLoading: true
     };
     componentDidMount() {
         this.props.getUsers();
-        this.props.sendUserData();
+        this.setState({isLoading: false})
+        //this.props.sendUserData();
     }
     render() {
         const { status, error, userslist } = this.props;
         return(
             <div className='app'>
-                <Modal typeModal={status ? 'succ' : error ? 'fail' : ''}
+                { status && <Modal typeModal={ status }
                        errorReqMessage={error}
-                       showModal={true}
-                />
+                /> }
                 <FormContainer formTitle={'Registration'} errorMsg={''} />
-                {/*{ status && <SuccessModal closeBtn={true} showModal={true} /> }*/}
-                {/*{ error && <ErrorModal closeBtn={false} showModal={true} errorReq={error} /> }*/}
                 { this.state.loading && <Hello/> }
                 { userslist.length>0 && <UserList users={ userslist }/> }
             </div>

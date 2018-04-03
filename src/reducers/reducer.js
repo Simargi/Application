@@ -1,7 +1,7 @@
 import actionType from '../action/actionTypes';
 
 let initialState = {
-    status: true,
+    status: false,
     error_message: '',
     users: []
 };
@@ -10,14 +10,15 @@ export default function reducerApp(state = initialState, action) {
         case actionType.SAVE_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users.data]
+                users: [...state.users, ...action.users.data],
+                status: state.status = 'success'
             };
             break;
         case actionType.FAIL_REQUEST:
             return {
                 ...state,
                 error_message: action.errors.message,
-                status: !state.status
+                status: state.status = 'fail'
             };
             break;
         default:
