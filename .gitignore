@@ -9,3 +9,4 @@ package-lock.json
 
 #exclude node
 public/bundle.js
+public/styles.css
