@@ -5,21 +5,16 @@ import '../assets/Form.sass';
 
 class FormContainer extends React.Component {
     static defaultProps = {
-        errorMsg: '',
-        formTitle: 'Registration'
+        errorMsg: ''
     };
     static propTypes = {
         formTitle: PropTypes.string.isRequired,
         errorMsg: PropTypes.string
     };
-    submitForm = (e) => {
-        //e.preventDefault();
-        console.log(1)
-    }
     render() {
         return(
             <div className={'form-container show'}>
-                <form onClick={this.submitForm}>
+                <form>
                     <h2 className={'form-title'}>{this.props.formTitle}</h2>
                     <FormInput name={'email'}
                                placeholder={'Please enter email'}
@@ -30,7 +25,7 @@ class FormContainer extends React.Component {
                                type={'password'}
                     />
                     <span className='error-tooltip'>{this.props.errorMsg}</span>
-                    <Button btnType={'submit'} value={'Ok'} btnSize={'md'} /*onClick={this.submitForm}*/ />
+                    <Button btnType={'submit'} value={'Ok'} btnSize={'md'} />
                 </form>
             </div>
         )

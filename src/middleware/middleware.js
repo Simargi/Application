@@ -1,5 +1,5 @@
 import actionType from '../action/actionTypes';
-import { saveUsers, errorMessage, saveServerData, saveCountryList } from '../action/action';
+import { saveUsers, errorMessage, saveCompanyHostData, saveCountryList } from '../action/action';
 
 const middleware = ({dispatch, getState}) => next => action => {
     switch (action.type) {
@@ -13,25 +13,15 @@ const middleware = ({dispatch, getState}) => next => action => {
                     }
                     return response.json()
                 })
-                .then(
-                    json => {
-                        return (
-                            dispatch(saveUsers(json))
-                        )
-                    }
-                )
-                .catch(error => {
-                    return (
-                        dispatch(errorMessage(error))
-                    )
-                })
+                .then( json => dispatch(saveUsers(json)) )
+                .catch( error => dispatch(errorMessage(error)) );
             break;
-        case actionType.GET_SERVER_DATA:
+        case actionType.GET_COMPANY_HOST_DATA:
             fetch('https://connection.keboola.com/v2/storage').then(res => {
                 return res.json();
             }).then((json) => {
-                var newData = json.components.splice(0, 35);
-                let takeData = newData.map(function(item) {
+                var modificationData = json.components.splice(0, 30);
+                let companyData = modificationData.map(function(item) {
                     return {
                         id: item.id,
                         name: item.name,
@@ -39,15 +29,15 @@ const middleware = ({dispatch, getState}) => next => action => {
                     }
                 });
                 let headers = [];
-                for (let key in takeData[0]) {
+                for (let key in companyData[0]) {
                     headers.push(key)
                 }
                 let obj = {
                     headers: headers,
-                    takeData: takeData
+                    companyData: companyData
                 };
                 return obj
-            }).then((json) => dispatch(saveServerData(json)));
+            }).then((json) => dispatch(saveCompanyHostData(json)));
             break;
         case actionType.GET_COUNTRY_LIST:
             fetch('https://restcountries.eu/rest/v1/all')

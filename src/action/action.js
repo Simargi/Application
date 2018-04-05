@@ -6,8 +6,8 @@ function getUsers() {
 function sendUserData() {
     return {type: actionType.SEND_FORM_DATA}
 }
-function getServerData() {
-    return {type: actionType.GET_SERVER_DATA}
+function getCompanyHostData() {
+    return {type: actionType.GET_COMPANY_HOST_DATA}
 }
 function getCountryList() {
     return {type: actionType.GET_COUNTRY_LIST}
@@ -25,10 +25,10 @@ function errorMessage(error) {
         errors: error
     }
 }
-function saveServerData(data) {
+function saveCompanyHostData(data) {
     return {
-        type: actionType.SAVE_SERVER_DATA,
-        serverData: data
+        type: actionType.SAVE_COMPANY_HOST_DATA,
+        companyHost: data
     }
 }
 function saveCountryList(country) {
@@ -38,4 +38,4 @@ function saveCountryList(country) {
     }
 }
 
-export { getUsers, sendUserData, saveUsers, errorMessage, getServerData, saveServerData, getCountryList, saveCountryList }
+export { getUsers, sendUserData, saveUsers, errorMessage, getCompanyHostData, saveCompanyHostData, getCountryList, saveCountryList }
