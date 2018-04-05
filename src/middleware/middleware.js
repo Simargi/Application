@@ -1,10 +1,11 @@
 import actionType from '../action/actionTypes';
+import { userList, countryList, companyHostData } from '../constans/constans';
 import { saveUsers, errorMessage, saveCompanyHostData, saveCountryList } from '../action/action';
 
 const middleware = ({dispatch, getState}) => next => action => {
     switch (action.type) {
         case actionType.GET_USERS:
-            fetch('https://reqres.in/api/users')
+            fetch(userList)
                 .then(function(response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' +
@@ -17,7 +18,7 @@ const middleware = ({dispatch, getState}) => next => action => {
                 .catch( error => dispatch(errorMessage(error)) );
             break;
         case actionType.GET_COMPANY_HOST_DATA:
-            fetch('https://connection.keboola.com/v2/storage').then(res => {
+            fetch(companyHostData).then(res => {
                 return res.json();
             }).then((json) => {
                 var modificationData = json.components.splice(0, 30);
@@ -40,7 +41,7 @@ const middleware = ({dispatch, getState}) => next => action => {
             }).then((json) => dispatch(saveCompanyHostData(json)));
             break;
         case actionType.GET_COUNTRY_LIST:
-            fetch('https://restcountries.eu/rest/v1/all')
+            fetch(countryList)
                 .then(response => response.json())
                 .then(json => dispatch(saveCountryList(json)))
                 .catch(error => console.warn(error));
