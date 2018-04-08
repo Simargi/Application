@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsers, sendUserData, getCompanyHostData, getCountryList } from './action/action';
+import { getUsers, sendUserData, getCompanyHostData, getCountryList, getTypicodeUsers } from './action/action';
 import Hello from "./container/Hello";
 import UserList from "./container/Users";
 import FormContainer from "./container/FormContainer";
@@ -8,6 +8,7 @@ import { Modal, TableContainer } from 'simargi-component';
 import { filterTableVersion } from './selectors/select';
 import ChoiceCountry from "./container/ChoiceCountry";
 import {isMobile} from "./utils";
+import TypicUsers from "./container/TypicUsers";
 
 @connect(
     state => ({
@@ -16,12 +17,14 @@ import {isMobile} from "./utils";
         status: state.status,
         company_headers: state.company_headers,
         company_host_data:filterTableVersion(state),
-        country_list: state.country_list
+        country_list: state.country_list,
+        typicodeUsers: state.typicodeUsers
     }), {
         getUsers,
         getCompanyHostData,
         sendUserData,
-        getCountryList
+        getCountryList,
+        getTypicodeUsers
     }
 )
 
@@ -33,6 +36,7 @@ export default class App extends React.Component {
         this.props.getUsers();
         this.props.getCompanyHostData();
         this.props.getCountryList();
+        this.props.getTypicodeUsers();
         window.addEventListener('resize', () => {
             //this.setState({loading: isMobile()})
         })
@@ -42,14 +46,13 @@ export default class App extends React.Component {
         const { loading } = this.state;
         return(
             <div className='app'>
-                <ChoiceCountry country_list={country_list} />
-                <TableContainer theadData={company_headers} tbodyData={company_host_data} />
-                { loading && status && <Modal typeModal={ status }
-                       errorReqMessage={error}
-                /> }
+                <TypicUsers users={this.props.typicodeUsers} />
+                {/*<ChoiceCountry country_list={country_list} />*/}
+                {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
+                {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}
                 {/*<FormContainer formTitle={'Registration'} errorMsg={''} />*/}
                 {/*{ loading && <Hello/> }*/}
-                { userslist.length>0 && <UserList users={ userslist }/> }
+                {/*{ userslist.length>0 && <UserList users={ userslist }/> }*/}
             </div>
         )
     }

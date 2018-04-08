@@ -6,7 +6,8 @@ let initialState = {
     users: [],
     company_headers: [],
     company_host_data: [],
-    country_list: []
+    country_list: [],
+    typicodeUsers: []
 };
 export default function reducerApp(state = initialState, action) {
     switch (action.type) {
@@ -36,6 +37,12 @@ export default function reducerApp(state = initialState, action) {
                 ...state,
                 country_list: [...state.country_list, ...action.countryList]
             };
+        case actionType.SAVE_TYPICODE_USERS:
+            return {
+                ...state,
+                typicodeUsers: [...state.typicodeUsers, ...action.typicodeUsers]
+            };
+            break;
         default:
             return state
     }
