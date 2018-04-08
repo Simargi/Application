@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TypicUsersModal from "./TypicUsersModal";
+import './../assets/TypicUsers.sass';
 
 class TypicUsers extends React.Component {
     static propTypes = {
@@ -30,12 +31,13 @@ class TypicUsers extends React.Component {
     render() {
         const { users } = this.props;
         return (
-            <div className={'users-list'}>
-                <ul>
+            <div className={'user_list_container'}>
+                <ul className="user_list">
                     {users.map((user, idx) => {
                         return <li key={idx}>
                             <a href="#" onClick={() => this.handleShowModal(idx)}>
-                                <p className={'user-name'}>{user.username}</p>
+                                <p className="user_img"></p>
+                                <p className={'user_name'}>{user.username}</p>
                             </a>
                         </li>
                     })

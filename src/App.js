@@ -9,6 +9,7 @@ import { filterTableVersion } from './selectors/select';
 import ChoiceCountry from "./container/ChoiceCountry";
 import {isMobile} from "./utils";
 import TypicUsers from "./container/TypicUsers";
+import './assets/Base.sass';
 
 @connect(
     state => ({
