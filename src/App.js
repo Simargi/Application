@@ -7,6 +7,7 @@ import FormContainer from "./container/FormContainer";
 import { Modal, TableContainer } from 'simargi-component';
 import { filterTableVersion } from './selectors/select';
 import ChoiceCountry from "./container/ChoiceCountry";
+import {isMobile} from "./utils";
 
 @connect(
     state => ({
@@ -32,10 +33,13 @@ export default class App extends React.Component {
         this.props.getUsers();
         this.props.getCompanyHostData();
         this.props.getCountryList();
+        window.addEventListener('resize', () => {
+            //this.setState({loading: isMobile()})
+        })
     }
     render() {
         const { status, error, userslist, company_headers, company_host_data, country_list } = this.props;
-        const { loading } =this.state;
+        const { loading } = this.state;
         return(
             <div className='app'>
                 <ChoiceCountry country_list={country_list} />
