@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 
 class TypicPost extends React.Component {
     render() {
-        const { post } = this.props;
+        const { postByUser, allPost, showPostByUser } = this.props;
         return(
             <div className={'user_post_container'}>
-                { post.map((obj, idx) => {
-                    return <article key={obj.id} className={'user_post'}>
-                        <h3 className={'post_title'}><p className={'post_number'}>#{obj.id}</p>{obj.title}</h3>
-                        <p className={'post_body'}>{obj.body}</p>
+                { showPostByUser && postByUser.map((post, idx) => {
+                    return <article key={post.id} className={'user_post'}>
+                        <h3 className={'post_title'}><p className={'post_number'}>#{post.id}</p>{post.title}</h3>
+                        <p className={'post_body'}>{post.body}</p>
+                    </article>
+                })
+                }
+                { !showPostByUser && allPost.map((post, id) => {
+                    return <article key={id} className={'user_post'}>
+                        <h3 className={'post_title'}><p className={'post_number'}>#{post.id}</p>{post.title}</h3>
+                        <p className={'post_body'}>{post.body}</p>
                     </article>
                 })
                 }

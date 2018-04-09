@@ -10,15 +10,16 @@ class TypicUsers extends React.Component {
         post: PropTypes.array.isRequired
     };
     state = {
+        showPost: false,
         showModal: false,
-        objectId: 0,
-        userId: 1
+        objectId: null,//0
+        userId: null //1
     };
     handleShowModal = (objId, userId) => {
-        this.setState({objectId: objId, userId: userId, showModal: true})
+        this.setState({objectId: objId, userId: userId, showModal: true, showPost: true})
     };
     handleShowPost = (userId) => {
-        this.setState({userId: userId})
+        this.setState({userId: userId, showPost: true})
     };
     closeModal = () => {
         this.setState({showModal: false})
@@ -63,7 +64,7 @@ class TypicUsers extends React.Component {
                 { this.state.showModal && <TypicUsersModal closeModalByKey={this.closeModalByKey}
                                                            closeModal={this.closeModal}
                                                            user={users[this.state.objectId]} />}
-                <TypicPost post={this.postOwnedUser()} />
+                <TypicPost postByUser={this.postOwnedUser()} allPost={post} showPostByUser={this.state.showPost} />
             </div>
         )
     }
