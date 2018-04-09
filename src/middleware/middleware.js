@@ -1,6 +1,6 @@
 import actionType from '../action/actionTypes';
-import { userList, countryList, companyHostData } from '../constans/constans';
-import { saveUsers, errorMessage, saveCompanyHostData, saveCountryList } from '../action/action';
+import { userList, countryList, companyHostData, typicodeUsers, typicodePost } from '../constans/constans';
+import { saveUsers, errorMessage, saveCompanyHostData, saveCountryList, saveTypicodeUsers, saveTypicodePost } from '../action/action';
 
 const middleware = ({dispatch, getState}) => next => action => {
     switch (action.type) {
@@ -46,7 +46,26 @@ const middleware = ({dispatch, getState}) => next => action => {
                 .then(json => dispatch(saveCountryList(json)))
                 .catch(error => console.warn(error));
             break;
-        case actionType.SEND_FORM_DATA:
+        case actionType.GET_TYPICODE_USERS:
+            fetch(typicodeUsers)
+                .then(function(response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        return;
+                    }
+                    return response.json()
+                })
+                .then( json => dispatch(saveTypicodeUsers(json)) )
+                .catch( error => error );
+            break;
+        case actionType.GET_TYPICODE_POST:
+            fetch(typicodePost)
+                .then( response => response.json() )
+                .then( json => dispatch(saveTypicodePost(json)) )
+                .catch( error => error );
+            break;
+        /*case actionType.SEND_FORM_DATA:
             let xhr = new XMLHttpRequest();
             let params = JSON.stringify({
                 "email": "",
@@ -59,7 +78,7 @@ const middleware = ({dispatch, getState}) => next => action => {
                 }
             };
             xhr.send(params);
-            break;
+            break;*/
         default:
             return next(action)
     }

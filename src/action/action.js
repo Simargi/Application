@@ -12,6 +12,12 @@ function getCompanyHostData() {
 function getCountryList() {
     return {type: actionType.GET_COUNTRY_LIST}
 }
+function getTypicodeUsers() {
+    return {type: actionType.GET_TYPICODE_USERS}
+}
+function getTypicodePost() {
+    return {type: actionType.GET_TYPICODE_POST}
+}
 //reducer
 function saveUsers(data) {
     return {
@@ -37,5 +43,19 @@ function saveCountryList(country) {
         countryList: country
     }
 }
-
-export { getUsers, sendUserData, saveUsers, errorMessage, getCompanyHostData, saveCompanyHostData, getCountryList, saveCountryList }
+function saveTypicodeUsers(user) {
+    return {
+        type: actionType.SAVE_TYPICODE_USERS,
+        typicodeUsers: user
+    }
+}
+function saveTypicodePost(posts) {
+    return {
+        type: actionType.SAVE_TYPICODE_POST,
+        typicodePost: posts
+    }
+}
+export {
+    getUsers, sendUserData, saveUsers, errorMessage, getCompanyHostData, saveCompanyHostData, getCountryList,
+    saveCountryList, getTypicodeUsers, saveTypicodeUsers, getTypicodePost, saveTypicodePost
+}

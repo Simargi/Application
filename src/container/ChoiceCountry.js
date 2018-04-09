@@ -1,28 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { addToStorage, clearStorage, setCookie } from './../utils/index';
 
 export default class ChoiceCountry extends React.Component {
     state = {
         selectValue: 'Choice country...'
     };
     componentWillMount() {
-        let cache = localStorage.getItem('country');
+        /*let cache = localStorage.getItem('country');
         cache = JSON.parse(cache);
         const time_now = new Date().getTime();
         const life_cycle = 1000 * 60;
         if (cache) {
             if ((time_now - cache.time) > life_cycle) {
-                localStorage.clear();
+                delete localStorage.country;
             } else {
-                this.setState({ selectValue: cache.name });
+                this.setState({ selectValue: cache['country'] });
             }
-        }
+        }*/
+        let cache = clearStorage('country', 60);
+        cache = cache ? cache['country'] : this.state.selectValue;
+        this.setState({ selectValue:  cache});
     }
     handleChange = (e) => {
         this.setState({
             selectValue: e.target.value
         });
-        localStorage.setItem('country', JSON.stringify({'name': e.target.value, time: new Date().getTime()}) );
+        addToStorage('country', e.target.value);
+        //setCookie('country', e.target.value, {expires: 120});
+        //localStorage.setItem('country', JSON.stringify({'name': e.target.value, time: new Date().getTime()}) );
     };
     render() {
         const { country_list } = this.props;
