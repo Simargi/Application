@@ -4,5 +4,6 @@ const countryList = 'https://restcountries.eu/rest/v1/all';
 const companyHostData = 'https://connection.keboola.com/v2/storage';
 const registerUsers = '';
 const typicodeUsers = 'https://jsonplaceholder.typicode.com/users';
+const typicodePost = 'https://jsonplaceholder.typicode.com/posts';
 
-export { mobileWidth, userList, countryList, companyHostData, registerUsers, typicodeUsers }
+export { mobileWidth, userList, countryList, companyHostData, registerUsers, typicodeUsers, typicodePost }

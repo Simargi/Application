@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsers, sendUserData, getCompanyHostData, getCountryList, getTypicodeUsers } from './action/action';
+import { getUsers, sendUserData, getCompanyHostData, getCountryList, getTypicodeUsers, getTypicodePost } from './action/action';
 import Hello from "./container/Hello";
 import UserList from "./container/Users";
 import FormContainer from "./container/FormContainer";
@@ -19,13 +19,15 @@ import './assets/Base.sass';
         company_headers: state.company_headers,
         company_host_data:filterTableVersion(state),
         country_list: state.country_list,
-        typicodeUsers: state.typicodeUsers
+        typicodeUsers: state.typicodeUsers,
+        typicodePost: state.typicodePost
     }), {
         getUsers,
         getCompanyHostData,
         sendUserData,
         getCountryList,
-        getTypicodeUsers
+        getTypicodeUsers,
+        getTypicodePost
     }
 )
 
@@ -38,6 +40,7 @@ export default class App extends React.Component {
         this.props.getCompanyHostData();
         this.props.getCountryList();
         this.props.getTypicodeUsers();
+        this.props.getTypicodePost();
         window.addEventListener('resize', () => {
             //this.setState({loading: isMobile()})
         })
@@ -47,7 +50,7 @@ export default class App extends React.Component {
         const { loading } = this.state;
         return(
             <div className='app'>
-                <TypicUsers users={this.props.typicodeUsers} />
+                <TypicUsers users={this.props.typicodeUsers} post={this.props.typicodePost} />
                 {/*<ChoiceCountry country_list={country_list} />*/}
                 {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
                 {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}

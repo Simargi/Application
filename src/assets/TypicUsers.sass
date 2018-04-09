@@ -1,23 +1,33 @@
 $base_color: #001224
 $modal_border_color: #4397e0
 
+.user_list_container
+  display: flex
+  align-items: flex-start
 .user_list
   display: flex
   flex-wrap: wrap
   max-width: 300px
   width: 100%
+  padding: .5em
   li
     width: 100%
-    padding: 0 1em
-    a
-      text-decoration: none
-      color: $base_color
+    padding: .3125em
+    .about_user
       display: flex
-      align-items: center
+      align-items: flex-start
+    a
+      display: inline-block
+      text-decoration: none
+      color: #2973e0
+      transition: color .3s
+      &:hover
+        color: rgba(41, 115, 224,.8)
   p
     font-size: 1.2em
     &.user_name
-      padding: 0 .625em
+      cursor: pointer
+      padding-right: .625em
 
 .modal_user_info
   position: fixed
@@ -86,3 +96,20 @@ $modal_border_color: #4397e0
           display: flex
           flex-direction: column
 
+.user_post_container
+  padding: .5em
+  .user_post
+    padding: .5em
+    margin-bottom: 10px
+    border: 1px solid $modal_border_color
+    &:last-child
+      margin-bottom: 0
+    .post_title
+      font-size: 1.125em
+      margin-bottom: 5px
+      display: flex
+      align-items: center
+    .post_number
+      font-size: .875rem
+      color: #999
+      margin-right: 5px

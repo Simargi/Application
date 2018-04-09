@@ -10,6 +10,7 @@ class TypicUsersModal extends React.Component {
     };
     componentWillMount() {
         document.addEventListener("keydown", this._handleCloseByKey);
+
     }
     componentWillUnmount () {
         document.removeEventListener("keydown", this._handleCloseByKey);

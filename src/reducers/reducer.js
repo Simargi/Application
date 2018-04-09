@@ -7,7 +7,8 @@ let initialState = {
     company_headers: [],
     company_host_data: [],
     country_list: [],
-    typicodeUsers: []
+    typicodeUsers: [],
+    typicodePost: []
 };
 export default function reducerApp(state = initialState, action) {
     switch (action.type) {
@@ -41,6 +42,12 @@ export default function reducerApp(state = initialState, action) {
             return {
                 ...state,
                 typicodeUsers: [...state.typicodeUsers, ...action.typicodeUsers]
+            };
+            break;
+        case actionType.SAVE_TYPICODE_POST:
+            return {
+                ...state,
+                typicodePost: [...state.typicodePost, ...action.typicodePost]
             };
             break;
         default:

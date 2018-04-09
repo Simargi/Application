@@ -1,9 +1,7 @@
 import { mobileWidth as width } from './../constans/constans';
 
 function isMobile() {
-    let value;
-    value = window.innerWidth <= width;
-    return value
+    return window.innerWidth <= width;
 }
 //LocalStorage
 function addToStorage(item, objValue) {
