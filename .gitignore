@@ -9,5 +9,6 @@ package-lock.json
 
 #exclude node
 public/bundle.js
-public/styles.css
+public/main.css
 public/test.js
+public/images

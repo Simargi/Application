@@ -47,7 +47,7 @@ class TypicUsersContainer extends React.Component {
         return newObj
     };
     render() {
-        const { users, post, comment } = this.props;
+        const { users, post, comment, filterUser } = this.props;
         return (
             <div className={'user_list_container'}>
                 {/*<ul className="user_list">*/}
@@ -70,7 +70,8 @@ class TypicUsersContainer extends React.Component {
                            allPost={post}
                            showPostByUser={this.state.showPost}
                            userComments={comment}
-                           userId={this.state.userId}/>
+                           userId={this.state.userId}
+                           filterUser={filterUser}/>
             </div>
         )
     }

@@ -10,6 +10,7 @@ let initialState = {
     typicodeUsers: [],
     typicodePost: [],
     typicodeComment: [],
+    typicodeFilterUsers: []
 };
 export default function reducerApp(state = initialState, action) {
     switch (action.type) {
@@ -42,7 +43,14 @@ export default function reducerApp(state = initialState, action) {
         case actionType.SAVE_TYPICODE_USERS:
             return {
                 ...state,
-                typicodeUsers: [...state.typicodeUsers, ...action.users]
+                typicodeUsers: [...state.typicodeUsers, ...action.users],
+                typicodeFilterUsers: [...action.users.map(item => {
+                    return {
+                        id: item.id,
+                        username: item.username
+                    }
+                })]
+
             };
             break;
         case actionType.SAVE_TYPICODE_POST:

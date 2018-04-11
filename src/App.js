@@ -22,7 +22,8 @@ import './assets/Base.sass';
         country_list: state.country_list,
         typicodeUsers: state.typicodeUsers,
         typicodePost: state.typicodePost,
-        typicodeComment: state.typicodeComment
+        typicodeComment: state.typicodeComment,
+        typicodeFilterUsers: state.typicodeFilterUsers
     }), {
         getUsers,
         getCompanyHostData,
@@ -56,7 +57,8 @@ export default class App extends React.Component {
             <div className='app'>
                 <TypicUsersContainer users={this.props.typicodeUsers}
                                      post={this.props.typicodePost}
-                                     comment={this.props.typicodeComment}/>
+                                     comment={this.props.typicodeComment}
+                                     filterUser={this.props.typicodeFilterUsers}/>
                 {/*<ChoiceCountry country_list={country_list} />*/}
                 {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
                 {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}
