@@ -1,0 +1,152 @@
+$base_color: #001224
+$modal_border_color: #4397e0
+
+.user_list_container
+  display: flex
+  align-items: flex-start
+.user_list
+  display: flex
+  flex-wrap: wrap
+  max-width: 300px
+  width: 100%
+  padding: .5em
+  li
+    width: 100%
+    .about_user
+      display: flex
+      align-items: flex-start
+      flex-wrap: wrap
+    a
+      display: inline-block
+      text-decoration: none
+      color: #2973e0
+      transition: color .3s
+      &:hover
+        color: rgba(41, 115, 224,.8)
+  p
+    font-size: 1.2em
+    &.user_img
+      width: 75px
+      img
+        max-width: 100%
+    &.user_name
+      cursor: pointer
+      margin-bottom: 5px
+  .user_info
+    padding-left: .625em
+
+.modal_user_info
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0,18,36,.8)
+  overflow-y: scroll
+  z-index: 9999
+  .modal_content
+    position: absolute
+    left: 50%
+    background-color: #fefefe
+    transform: translate(-50%, 0)
+    margin: 100px auto
+    padding: 20px 25px
+    border: 2px solid $modal_border_color
+    width: 100%
+    max-width: 400px
+  .close_modal
+    position: absolute
+    top: 0
+    right: 5px
+    z-index: 20
+    color: $base_color
+    font-size: 1.5em
+    cursor: pointer
+    font-weight: bold
+    font-family: cursive
+    display: inline-block
+    line-height: 1
+    transition: color .3s, transform .1s
+    &:hover
+      color: rgba(0,18,36,.8)
+      transform: scale(1.1)
+  .full_info
+    & > p
+      margin-bottom: 5px
+      font-weight: bold
+      &::after
+        content: ''
+        display: block
+        width: 135px
+        height: 2px
+        background-color: $modal_border_color
+      span
+        display: block
+        text-indent: 5px
+        font-weight: normal
+  .company_address
+    display: flex
+    flex-wrap: wrap
+    & > p
+      width: 100%
+      font-weight: bold
+    li
+      display: flex
+      width: 100%
+      padding-left: 5px
+      & > span
+        display: inline-block
+        padding: 0 2px
+      &.company_geo
+        p:not(:first-child)
+          display: flex
+          flex-direction: column
+
+.user_post_container
+  padding: .5em
+  .user_post
+    padding: .5em
+    margin-bottom: 10px
+    border: 1px solid $modal_border_color
+    &:last-child
+      margin-bottom: 0
+    .post_author
+      font-size: 1.2em
+      font-weight: bold
+      margin-bottom: 5px
+      &::after
+        content: ''
+        display: block
+        width: 135px
+        height: 2px
+        background-color: $modal_border_color
+    .post_title
+      font-size: 1.125em
+      margin-bottom: 5px
+      display: flex
+      align-items: center
+    .post_number
+      font-size: .875rem
+      color: #999
+      margin-right: 5px
+
+.commentary_container
+  margin-top: 10px
+  .post_comment_container
+    display: flex
+    flex-wrap: wrap
+    align-items: baseline
+    margin-bottom: 5px
+    border: 1px solid #447eff
+    border-radius: 4px
+    padding: .5em
+    background-color: #86c0f1
+    .comment_name
+      font-weight: bold
+      font-size: 0.875em
+      padding-right: 10px
+    .comment_from_email
+      font-size: .75em
+      color: #777
+    .comment_body
+      width: 100%

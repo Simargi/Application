@@ -50,12 +50,25 @@ module.exports = {
                         sourceMap: true
                     }
                 }]*/ //css in js file
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images',
+                            publicPath: 'images'
+                        }
+                    }
+                ]
             }
         ]
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: 'styles.css'
+            filename: 'main.css'
         }),
     ]
 };
