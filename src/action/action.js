@@ -18,6 +18,9 @@ function getTypicodeUsers() {
 function getTypicodePost() {
     return {type: actionType.GET_TYPICODE_POST}
 }
+function getTypicodeComment() {
+    return {type: actionType.GET_TYPICODE_COMMENT}
+}
 //reducer
 function saveUsers(data) {
     return {
@@ -46,16 +49,23 @@ function saveCountryList(country) {
 function saveTypicodeUsers(user) {
     return {
         type: actionType.SAVE_TYPICODE_USERS,
-        typicodeUsers: user
+        users: user
     }
 }
-function saveTypicodePost(posts) {
+function saveTypicodePost(post) {
     return {
         type: actionType.SAVE_TYPICODE_POST,
-        typicodePost: posts
+        posts: post
+    }
+}
+function saveTypicodeComment(comment) {
+    return {
+        type: actionType.SAVE_TYPICODE_COMMENT,
+        comments: comment
     }
 }
 export {
     getUsers, sendUserData, saveUsers, errorMessage, getCompanyHostData, saveCompanyHostData, getCountryList,
-    saveCountryList, getTypicodeUsers, saveTypicodeUsers, getTypicodePost, saveTypicodePost
+    saveCountryList, getTypicodeUsers, saveTypicodeUsers, getTypicodePost, saveTypicodePost, getTypicodeComment,
+    saveTypicodeComment
 }

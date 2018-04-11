@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import TypicUsersModal from "./TypicUsersModal";
 import './../assets/TypicUsers.sass';
 import TypicPost from "./TypicPost";
+import TypicUsersList from "./TypicUsersList";
 
-class TypicUsers extends React.Component {
+class TypicUsersContainer extends React.Component {
     static propTypes = {
         users: PropTypes.array.isRequired,
         post: PropTypes.array.isRequired
@@ -12,8 +13,8 @@ class TypicUsers extends React.Component {
     state = {
         showPost: false,
         showModal: false,
-        objectId: null,//0
-        userId: null //1
+        objectId: null,
+        userId: null
     };
     handleShowModal = (objId, userId) => {
         this.setState({objectId: objId, userId: userId, showModal: true, showPost: true})
@@ -46,28 +47,33 @@ class TypicUsers extends React.Component {
         return newObj
     };
     render() {
-        const { users, post } = this.props;
+        const { users, post, comment } = this.props;
         return (
             <div className={'user_list_container'}>
-                <ul className="user_list">
-                    {users.map((user, idx) => {
-                        return <li key={idx}>
-                            <div className={'about_user'}>
-                                <p className="user_img"></p>
-                                <p className={'user_name'} onClick={() => this.handleShowPost(user.id)}>{user.username}</p>
-                                <a href="#" onClick={() => this.handleShowModal(idx, user.id)}><p className={'user_more_info'}>More...</p></a>
-                            </div>
-                        </li>
-                    })
-                    }
-                </ul>
+                {/*<ul className="user_list">*/}
+                    {/*{users.map((user, idx) => {*/}
+                        {/*return <li key={idx}>*/}
+                            {/*<div className={'about_user'}>*/}
+                                {/*<p className="user_img"></p>*/}
+                                {/*<p className={'user_name'} onClick={() => this.handleShowPost(user.id)}>{user.username}</p>*/}
+                                {/*<a href="#" onClick={() => this.handleShowModal(idx, user.id)}><p className={'user_more_info'}>More...</p></a>*/}
+                            {/*</div>*/}
+                        {/*</li>*/}
+                    {/*})*/}
+                    {/*}*/}
+                {/*</ul>*/}
+                <TypicUsersList users={users} showPost={this.handleShowPost} showModal={this.handleShowModal} />
                 { this.state.showModal && <TypicUsersModal closeModalByKey={this.closeModalByKey}
                                                            closeModal={this.closeModal}
                                                            user={users[this.state.objectId]} />}
-                <TypicPost postByUser={this.postOwnedUser()} allPost={post} showPostByUser={this.state.showPost} />
+                <TypicPost postByUser={this.postOwnedUser()}
+                           allPost={post}
+                           showPostByUser={this.state.showPost}
+                           userComments={comment}
+                           userId={this.state.userId}/>
             </div>
         )
     }
 }
 
-export default TypicUsers
+export default TypicUsersContainer

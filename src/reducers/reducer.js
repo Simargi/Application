@@ -8,7 +8,8 @@ let initialState = {
     company_host_data: [],
     country_list: [],
     typicodeUsers: [],
-    typicodePost: []
+    typicodePost: [],
+    typicodeComment: [],
 };
 export default function reducerApp(state = initialState, action) {
     switch (action.type) {
@@ -41,13 +42,19 @@ export default function reducerApp(state = initialState, action) {
         case actionType.SAVE_TYPICODE_USERS:
             return {
                 ...state,
-                typicodeUsers: [...state.typicodeUsers, ...action.typicodeUsers]
+                typicodeUsers: [...state.typicodeUsers, ...action.users]
             };
             break;
         case actionType.SAVE_TYPICODE_POST:
             return {
                 ...state,
-                typicodePost: [...state.typicodePost, ...action.typicodePost]
+                typicodePost: [...state.typicodePost, ...action.posts]
+            };
+            break;
+        case actionType.SAVE_TYPICODE_COMMENT:
+            return {
+                ...state,
+                typicodeComment: [...state.typicodeComment, ...action.comments]
             };
             break;
         default:

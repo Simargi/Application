@@ -1,6 +1,7 @@
 import actionType from '../action/actionTypes';
-import { userList, countryList, companyHostData, typicodeUsers, typicodePost } from '../constans/constans';
-import { saveUsers, errorMessage, saveCompanyHostData, saveCountryList, saveTypicodeUsers, saveTypicodePost } from '../action/action';
+import { userList, countryList, companyHostData, typicodeUsers, typicodePost, typiccodeComment } from '../constans/constans';
+import { saveUsers, errorMessage, saveCompanyHostData, saveCountryList, saveTypicodeUsers, saveTypicodePost,
+    saveTypicodeComment } from '../action/action';
 
 const middleware = ({dispatch, getState}) => next => action => {
     switch (action.type) {
@@ -63,6 +64,12 @@ const middleware = ({dispatch, getState}) => next => action => {
             fetch(typicodePost)
                 .then( response => response.json() )
                 .then( json => dispatch(saveTypicodePost(json)) )
+                .catch( error => error );
+            break;
+        case actionType.GET_TYPICODE_COMMENT:
+            fetch(typiccodeComment)
+                .then( response => response.json() )
+                .then( json => dispatch(saveTypicodeComment(json)) )
                 .catch( error => error );
             break;
         /*case actionType.SEND_FORM_DATA:

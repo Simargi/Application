@@ -26,7 +26,7 @@ module.exports = {
             },
             {
                 test: /\.s?(a|c)ss$/,
-                /*use: ExtractTextPlugin.extract({
+                use: ExtractTextPlugin.extract({
                     fallback: "style-loader"
                 , use:[{
                     loader: "css-loader", options: {
@@ -38,8 +38,8 @@ module.exports = {
                     loader: "sass-loader", options: {
                         sourceMap: true
                     }
-                }]  })*/ //css in separate
-                use: [{
+                }]  }) //css in separate
+                /*use: [{
                     loader: "style-loader"
                 }, {
                     loader: "css-loader", options: {
@@ -49,13 +49,26 @@ module.exports = {
                     loader: "sass-loader", options: {
                         sourceMap: true
                     }
-                }] //css in js file
+                }]*/ //css in js file
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[name].[ext]',
+                            outputPath: 'images',
+                            publicPath: 'images'
+                        }
+                    }
+                ]
             }
         ]
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: 'styles.css'
+            filename: 'main.css'
         }),
     ]
 };
