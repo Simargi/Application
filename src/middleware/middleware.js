@@ -47,7 +47,7 @@ const middleware = ({dispatch, getState}) => next => action => {
                 .then(json => dispatch(saveCountryList(json)))
                 .catch(error => console.warn(error));
             break;
-        case actionType.GET_TYPICODE_USERS:
+        /*case actionType.GET_TYPICODE_USERS:
             fetch(typicodeUsers)
                 .then(function(response) {
                     if (response.status !== 200) {
@@ -71,21 +71,21 @@ const middleware = ({dispatch, getState}) => next => action => {
                 .then( response => response.json() )
                 .then( json => dispatch(saveTypicodeComment(json)) )
                 .catch( error => error );
-            break;
-        /*case actionType.SEND_FORM_DATA:
-            let xhr = new XMLHttpRequest();
-            let params = JSON.stringify({
-                "email": "",
-                "password": ""
-            });
-            xhr.open('POST', 'https://reqres.in/api/register', true);
-            xhr.onreadystatechange = function() {
-                if(xhr.readyState == 4 && xhr.status == 201) {
-                    alert(xhr.responseText);
-                }
-            };
-            xhr.send(params);
             break;*/
+        case actionType.GET_USERS_BLOG_DATA:
+            async function usersBlogData() {
+                const first = await fetch(typicodeUsers);
+                const two = await fetch(typicodePost);
+                const third = await fetch(typiccodeComment);
+                const firstvalue = await first.json();
+                dispatch(saveTypicodeUsers(firstvalue));
+                const secondvalue = await two.json();
+                dispatch(saveTypicodePost(secondvalue));
+                const thirdvalue = await third.json();
+                dispatch(saveTypicodeComment(thirdvalue));
+            }
+            usersBlogData();
+            break;
         default:
             return next(action)
     }

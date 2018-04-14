@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsers, sendUserData, getCompanyHostData, getCountryList, getTypicodeUsers, getTypicodePost,
-    getTypicodeComment } from './action/action';
+import {
+    getUsers, sendUserData, getCompanyHostData, getCountryList, getTypicodeUsers, getTypicodePost,
+    getTypicodeComment, getUsersBlogData, takeIdUserBlog
+} from './action/action';
 import Hello from "./container/Hello";
 import UserList from "./container/Users";
 import FormContainer from "./container/FormContainer";
@@ -23,7 +25,8 @@ import './assets/Base.sass';
         typicodeUsers: state.typicodeUsers,
         typicodePost: state.typicodePost,
         typicodeComment: state.typicodeComment,
-        typicodeFilterUsers: state.typicodeFilterUsers
+        typicodeFilterUsers: state.typicodeFilterUsers,
+        filterBlogUser: state.filterBlogUser
     }), {
         getUsers,
         getCompanyHostData,
@@ -32,6 +35,8 @@ import './assets/Base.sass';
         getTypicodeUsers,
         getTypicodePost,
         getTypicodeComment,
+        getUsersBlogData,
+        takeIdUserBlog,
     }
 )
 
@@ -40,16 +45,20 @@ export default class App extends React.Component {
         loading: false
     };
     componentDidMount() {
-        this.props.getUsers();
-        this.props.getCompanyHostData();
-        this.props.getCountryList();
-        this.props.getTypicodeUsers();
-        this.props.getTypicodePost();
-        this.props.getTypicodeComment();
+        //this.props.getUsers();
+        //this.props.getCompanyHostData();
+        //this.props.getCountryList();
+        //this.props.getTypicodeUsers();
+        //this.props.getTypicodePost();
+        //this.props.getTypicodeComment();
+        this.props.getUsersBlogData();
         window.addEventListener('resize', () => {
             //this.setState({loading: isMobile()})
         })
     }
+    idUserBlog = (id) => {
+      this.props.takeIdUserBlog(id)
+    };
     render() {
         const { status, error, userslist, company_headers, company_host_data, country_list } = this.props;
         const { loading } = this.state;
@@ -58,7 +67,9 @@ export default class App extends React.Component {
                 <TypicUsersContainer users={this.props.typicodeUsers}
                                      post={this.props.typicodePost}
                                      comment={this.props.typicodeComment}
-                                     filterUser={this.props.typicodeFilterUsers}/>
+                                     filterUser={this.props.typicodeFilterUsers}
+                                     idUserBlog={this.idUserBlog}
+                                     filterBlogUser={this.props.filterBlogUser}/>
                 {/*<ChoiceCountry country_list={country_list} />*/}
                 {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
                 {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}

@@ -8,19 +8,20 @@ import TypicUsersList from "./TypicUsersList";
 class TypicUsersContainer extends React.Component {
     static propTypes = {
         users: PropTypes.array.isRequired,
-        post: PropTypes.array.isRequired
+        post: PropTypes.array.isRequired,
+        comment: PropTypes.array.isRequired,
+        idUserBlog: PropTypes.func
     };
     state = {
-        showPost: false,
         showModal: false,
-        objectId: null,
-        userId: null
+        objectId: null
     };
     handleShowModal = (objId, userId) => {
-        this.setState({objectId: objId, userId: userId, showModal: true, showPost: true})
+        this.setState({objectId: objId, showModal: true})
+        this.props.idUserBlog(userId)
     };
     handleShowPost = (userId) => {
-        this.setState({userId: userId, showPost: true})
+        this.props.idUserBlog(userId)
     };
     closeModal = () => {
         this.setState({showModal: false})
@@ -35,43 +36,18 @@ class TypicUsersContainer extends React.Component {
             this.setState({showModal: false})
         }
     };
-    postOwnedUser = () => {
-        let newObj = [],
-            posts = this.props.post,
-            uId = this.state.userId;
-        for (let key in posts) {
-            if (posts[key]['userId'] === uId) {
-                newObj.push(posts[key])
-            }
-        }
-        return newObj
-    };
     render() {
-        const { users, post, comment, filterUser } = this.props;
+        const { users, post, comment, filterUser, filterBlogUser } = this.props;
         return (
             <div className={'user_list_container'}>
-                {/*<ul className="user_list">*/}
-                    {/*{users.map((user, idx) => {*/}
-                        {/*return <li key={idx}>*/}
-                            {/*<div className={'about_user'}>*/}
-                                {/*<p className="user_img"></p>*/}
-                                {/*<p className={'user_name'} onClick={() => this.handleShowPost(user.id)}>{user.username}</p>*/}
-                                {/*<a href="#" onClick={() => this.handleShowModal(idx, user.id)}><p className={'user_more_info'}>More...</p></a>*/}
-                            {/*</div>*/}
-                        {/*</li>*/}
-                    {/*})*/}
-                    {/*}*/}
-                {/*</ul>*/}
                 <TypicUsersList users={users} showPost={this.handleShowPost} showModal={this.handleShowModal} />
                 { this.state.showModal && <TypicUsersModal closeModalByKey={this.closeModalByKey}
                                                            closeModal={this.closeModal}
                                                            user={users[this.state.objectId]} />}
-                <TypicPost postByUser={this.postOwnedUser()}
-                           allPost={post}
-                           showPostByUser={this.state.showPost}
+                <TypicPost allPost={post}
                            userComments={comment}
-                           userId={this.state.userId}
-                           filterUser={filterUser}/>
+                           filterUser={filterUser}
+                           filterBlogUser={filterBlogUser}/>
             </div>
         )
     }

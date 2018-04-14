@@ -10,7 +10,8 @@ let initialState = {
     typicodeUsers: [],
     typicodePost: [],
     typicodeComment: [],
-    typicodeFilterUsers: []
+    typicodeFilterUsers: [],
+    filterBlogUser: []
 };
 export default function reducerApp(state = initialState, action) {
     switch (action.type) {
@@ -65,6 +66,15 @@ export default function reducerApp(state = initialState, action) {
                 typicodeComment: [...state.typicodeComment, ...action.comments]
             };
             break;
+        case actionType.TAKE_ID_USER_BLOG:
+            return {
+                ...state,
+                filterBlogUser: [...state.typicodePost.filter(function (item) {
+                    if (item['userId'] === action.id) {
+                        return item
+                    }
+                })]
+            };
         default:
             return state
     }
