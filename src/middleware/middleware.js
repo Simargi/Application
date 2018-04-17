@@ -47,31 +47,6 @@ const middleware = ({dispatch, getState}) => next => action => {
                 .then(json => dispatch(saveCountryList(json)))
                 .catch(error => console.warn(error));
             break;
-        /*case actionType.GET_TYPICODE_USERS:
-            fetch(typicodeUsers)
-                .then(function(response) {
-                    if (response.status !== 200) {
-                        console.log('Looks like there was a problem. Status Code: ' +
-                            response.status);
-                        return;
-                    }
-                    return response.json()
-                })
-                .then( json => dispatch(saveTypicodeUsers(json)) )
-                .catch( error => error );
-            break;
-        case actionType.GET_TYPICODE_POST:
-            fetch(typicodePost)
-                .then( response => response.json() )
-                .then( json => dispatch(saveTypicodePost(json)) )
-                .catch( error => error );
-            break;
-        case actionType.GET_TYPICODE_COMMENT:
-            fetch(typiccodeComment)
-                .then( response => response.json() )
-                .then( json => dispatch(saveTypicodeComment(json)) )
-                .catch( error => error );
-            break;*/
         case actionType.GET_USERS_BLOG_DATA:
             async function usersBlogData() {
                 const first = await fetch(typicodeUsers);
