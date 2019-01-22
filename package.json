@@ -1,6 +1,6 @@
 {
   "name": "simargi-form-app",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/Simargi/Application.git"
   },
   "author": "Simargi",
-  "license": "Simargi",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Simargi/Application/issues"
   },
@@ -25,7 +25,7 @@
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "reselect": "^3.0.1",
-    "simargi-component": "^0.6.3"
+    "simargi-component": "^0.6.7"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",
