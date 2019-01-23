@@ -42,7 +42,7 @@ import './assets/Base.sass';
 
 export default class App extends React.Component {
     state = {
-        loading: false
+        loading: true
     };
     componentDidMount() {
         //this.props.getUsers();
@@ -64,17 +64,17 @@ export default class App extends React.Component {
         const { loading } = this.state;
         return(
             <div className='app'>
-                <TypicUsersContainer users={this.props.typicodeUsers}
-                                     post={this.props.typicodePost}
-                                     comment={this.props.typicodeComment}
-                                     filterUser={this.props.typicodeFilterUsers}
-                                     idUserBlog={this.idUserBlog}
-                                     filterBlogUser={this.props.filterBlogUser}/>
+                {/*<TypicUsersContainer users={this.props.typicodeUsers}*/}
+                                     {/*post={this.props.typicodePost}*/}
+                                     {/*comment={this.props.typicodeComment}*/}
+                                     {/*filterUser={this.props.typicodeFilterUsers}*/}
+                                     {/*idUserBlog={this.idUserBlog}*/}
+                                     {/*filterBlogUser={this.props.filterBlogUser}/>*/}
                 {/*<ChoiceCountry country_list={country_list} />*/}
                 {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
                 {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}
                 {/*<FormContainer formTitle={'Registration'} errorMsg={''} />*/}
-                {/*{ loading && <Hello/> }*/}
+                { loading && <Hello/> }
                 {/*{ userslist.length>0 && <UserList users={ userslist }/> }*/}
             </div>
         )

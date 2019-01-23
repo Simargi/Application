@@ -1,6 +1,6 @@
 {
   "name": "simargi-form-app",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -13,7 +13,6 @@
     "url": "git+https://github.com/Simargi/Application.git"
   },
   "author": "Simargi",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Simargi/Application/issues"
   },
