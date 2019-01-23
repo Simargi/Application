@@ -71,10 +71,10 @@ export default class App extends React.Component {
                                      {/*idUserBlog={this.idUserBlog}*/}
                                      {/*filterBlogUser={this.props.filterBlogUser}/>*/}
                 {/*<ChoiceCountry country_list={country_list} />*/}
-                {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
+                <TableContainer theadData={company_headers} tbodyData={company_host_data} />
                 {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}
                 {/*<FormContainer formTitle={'Registration'} errorMsg={''} />*/}
-                { loading && <Hello/> }
+                {/*{ loading && <Hello/> }*/}
                 {/*{ userslist.length>0 && <UserList users={ userslist }/> }*/}
             </div>
         )
