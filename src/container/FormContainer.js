@@ -43,7 +43,7 @@ class FormContainer extends React.Component {
 					           onChange={this.checkFieldPass}
 					/>
 					<span className='error-tooltip'>{this.props.errorMsg}</span>
-					<Button btnType={'submit'} text={'Ok'} btnSize={'md'} disabled={!(email.length && password.length)} />
+					<Button btnType={'submit'} text={'Ok'} btnSize={'md'} disabled={email.length && password.length?false:true} />
 				</form>
 			</div>
 		)

@@ -47,7 +47,7 @@ export default class App extends React.Component {
     componentDidMount() {
         //this.props.getUsers();
         //this.props.getCompanyHostData();
-        //this.props.getCountryList();
+        this.props.getCountryList();
         //this.props.getTypicodeUsers();
         //this.props.getTypicodePost();
         //this.props.getTypicodeComment();
@@ -70,8 +70,8 @@ export default class App extends React.Component {
                                      {/*filterUser={this.props.typicodeFilterUsers}*/}
                                      {/*idUserBlog={this.idUserBlog}*/}
                                      {/*filterBlogUser={this.props.filterBlogUser}/>*/}
-                {/*<ChoiceCountry country_list={country_list} />*/}
-                <TableContainer theadData={company_headers} tbodyData={company_host_data} />
+                <ChoiceCountry country_list={country_list} />
+                {/*<TableContainer theadData={company_headers} tbodyData={company_host_data} />*/}
                 {/*{ loading && status && <Modal typeModal={ status } errorReqMessage={error}/> }*/}
                 {/*<FormContainer formTitle={'Registration'} errorMsg={''} />*/}
                 {/*{ loading && <Hello/> }*/}
