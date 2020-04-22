@@ -21,6 +21,9 @@ function getTypicodePost() {
 function getTypicodeComment() {
     return {type: actionType.GET_TYPICODE_COMMENT}
 }
+function getUsersBlogData() {
+    return {type: actionType.GET_USERS_BLOG_DATA}
+}
 //reducer
 function saveUsers(data) {
     return {
@@ -64,8 +67,14 @@ function saveTypicodeComment(comment) {
         comments: comment
     }
 }
+function takeIdUserBlog(id) {
+    return {
+        type: actionType.TAKE_ID_USER_BLOG,
+        id: id
+    }
+}
 export {
     getUsers, sendUserData, saveUsers, errorMessage, getCompanyHostData, saveCompanyHostData, getCountryList,
     saveCountryList, getTypicodeUsers, saveTypicodeUsers, getTypicodePost, saveTypicodePost, getTypicodeComment,
-    saveTypicodeComment
+    saveTypicodeComment, getUsersBlogData, takeIdUserBlog
 }
